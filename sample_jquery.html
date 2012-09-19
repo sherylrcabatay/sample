@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>jQuery</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(window).load(function(){
+			$('#click_me').click(function(){
+				alert('here');
+			});
+			$('#toggle_button').click(function(){
+				$('#sample_text').toggle('slow');
+			});
+			$('#append_form').submit(function(){
+				console.log('Displaying information for the append_form');
+				console.log($('#append_form').serialize());
+				$('#append_text_area').append($('.append_text').val() + "<br />");
+				//return false so that the form does not get submitted
+				return false;
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>Test 1 - Alert</h1>
+	<button id="click_me">Click Me</button>
+	<h1>Test 2 - Toggle</h1>
+	<div id="sample_text">
+		Some sample text... Some sample text... Some sample text... Some sample text... Some sample text... 
+	</div>
+	<button id="toggle_button">Toggle</button>
+	<h1>Test 3 - Append and Form Submission</h1>
+	<form action="test2.php" method="post" id="append_form">
+		Text to Add: 
+		<input type="text" class="append_text" name="append_text_name" value="" />
+		<input type="submit" value="Append" />
+	</form>
+	<div id="append_text_area"></div>
+</body>
+</html>
